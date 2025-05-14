@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATB Detailing</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: white;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      padding: 1em 2em;
+    }
+
+    .logo {
+      height: 60px;
+    }
+
+    .book-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 0.75em 1.5em;
+      font-size: 1em;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 5em 2em;
+      background: linear-gradient(to right, #000, #001f3f);
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2em;
+      background: #111;
+      color: #ccc;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+      padding-top: 50px;
+    }
+
+    .modal-content {
+      background-color: #1c1c1c;
+      margin: auto;
+      padding: 2em;
+      border: 1px solid #444;
+      width: 90%;
+      max-width: 500px;
+      color: white;
+    }
+
+    .close {
+      color: white;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px;
+      margin: 1em 0;
+    }
+
+    .form-section {
+      display: none;
+      flex-direction: column;
+      gap: 1em;
+      margin-top: 1em;
+    }
+
+    input, select {
+      padding: 0.5em;
+      font-size: 1em;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="logo.png" alt="ATB Detailing Logo" class="logo" />
+    <button class="book-btn" onclick="openModal()">Book Now</button>
+  </header>
+
+  <main class="hero">
+    <h1>Mobile Car & Boat Detailing</h1>
+    <p>We bring the shine to you — West Arkansas & East Oklahoma</p>
+    <button class="book-btn" onclick="openModal()">Book Now</button>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 ATB Detailing</p>
+  </footer>
+
+  <!-- Modal -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="vehicleSelection">
+        <h2>Select a Vehicle</h2>
+        <div class="button-grid">
+          <button onclick="showForm('Car')">Car</button>
+          <button onclick="showForm('SUV')">SUV</button>
+          <button onclick="showForm('Truck')">Truck</button>
+          <button onclick="showBoatOptions()">Boat</button>
+        </div>
+      </div>
+
+      <div id="boatSelection" style="display:none;">
+        <h2>Select a Boat Type</h2>
+        <div class="button-grid">
+          <button onclick="showForm('Pontoon')">Pontoon</button>
+          <button onclick="showForm('Speed Boat')">Speed Boat</button>
+          <button onclick="showForm('Small Boat')">Small Boat</button>
+        </div>
+      </div>
+
+      <div id="bookingForm" class="form-section">
+        <h3 id="formTitle">Book Your Service</h3>
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="tel" placeholder="Phone Number" required />
+        <input type="text" placeholder="Service Address" required />
+        <input type="text" placeholder="Make & Model" required />
+        <label for="date">Choose a Day:</label>
+        <input type="date" id="date" required />
+        <label for="time">Choose a Time Window:</label>
+        <select id="time">
+          <option value="">Select a Time Slot</option>
+          <option>8 AM – 12 PM</option>
+          <option>12 PM – 4 PM</option>
+          <option>4 PM – 8 PM</option>
+        </select>
+        <button class="book-btn">Submit Booking</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("bookingModal");
+    const vehicleSelection = document.getElementById("vehicleSelection");
+    const boatSelection = document.getElementById("boatSelection");
+    const bookingForm = document.getElementById("bookingForm");
+    const formTitle = document.getElementById("formTitle");
+
+    function openModal() {
+      modal.style.display = "block";
+      vehicleSelection.style.display = "block";
+      boatSelection.style.display = "none";
+      bookingForm.style.display = "none";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    function showBoatOptions() {
+      vehicleSelection.style.display = "none";
+      boatSelection.style.display = "block";
+    }
+
+    function showForm(type) {
+      vehicleSelection.style.display = "none";
+      boatSelection.style.display = "none";
+      bookingForm.style.display = "flex";
+      formTitle.innerText = `Book Your ${type} Service`;
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+	</html>
