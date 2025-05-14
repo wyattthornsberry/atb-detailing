@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATB Detailing</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+    }
+
+    header {
+      background-color: #000;
+      padding: 1.5em;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #00aaff;
+      margin: 0;
+    }
+
+    nav {
+      text-align: center;
+      background-color: #111;
+      padding: 1em 0;
+    }
+
+    nav a {
+      color: #00aaff;
+      text-decoration: none;
+      margin: 0 1em;
+      font-weight: bold;
+    }
+
+    .hero {
+      padding: 3em 1em;
+      text-align: center;
+      background: linear-gradient(to bottom, #111, #000);
+    }
+
+    .hero h2 {
+      font-size: 2em;
+      color: #00aaff;
+      margin-bottom: 0.5em;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+    }
+
+    .hero button {
+      margin-top: 1.5em;
+      padding: 1em 2em;
+      background-color: #00aaff;
+      color: #000;
+      border: none;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    section {
+      padding: 2em 1em;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h3 {
+      color: #00aaff;
+      margin-bottom: 0.5em;
+    }
+
+    .services ul, .vehicle-options, .boat-options {
+      list-style: none;
+      padding: 0;
+    }
+
+    .services li, .vehicle-options button, .boat-options button {
+      background-color: #111;
+      padding: 1em;
+      margin-bottom: 1em;
+      border-left: 4px solid #00aaff;
+    }
+
+    .vehicle-options button, .boat-options button {
+      width: 100%;
+      border: none;
+      color: #fff;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .contact a {
+      color: #00aaff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .call-button {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #00aaff;
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      padding: 1em 1.5em;
+      font-size: 1em;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(0, 170, 255, 0.7);
+      z-index: 999;
+    }
+
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 0.75em;
+      margin: 0.5em 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    form button {
+      background-color: #00aaff;
+      color: #000;
+      border: none;
+      padding: 1em;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1em;
+    }
+
+    @media (max-width: 768px) {
+      .call-button {
+        display: block;
+      }
+    }
+  </style>
+  <script>
+    function showBoatOptions() {
+      document.getElementById('boat-options').style.display = 'block';
+    }
+
+    function showBookingForm(vehicleType) {
+      document.getElementById('selected-vehicle').value = vehicleType;
+      document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>ATB Detailing</h1>
+    <p>Mobile Car & Boat Detailing – We Come to You</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#book">Book Now</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="hero">
+    <h2>Top-Tier Detailing, Wherever You Are</h2>
+    <p>Serving West Arkansas & East Oklahoma</p>
+    <button onclick="document.getElementById('book').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
+  </div>
+
+  <section id="about">
+    <h3>About Us</h3>
+    <p>ATB Detailing offers professional mobile car and boat detailing right at your location. Whether you're at home, at work, or by the lake, we’ll come to you fully equipped to deliver showroom results.</p>
+  </section>
+
+  <section id="services" class="services">
+    <h3>Services</h3>
+    <ul>
+      <li><strong>Exterior Car Detailing:</strong> Wash, wax, tire shine, and paint protection.</li>
+      <li><strong>Interior Car Detailing:</strong> Vacuum, shampoo, leather treatment, and odor removal.</li>
+      <li><strong>Boat Detailing:</strong> Hull cleaning, oxidation removal, vinyl conditioning, and polish.</li>
+    </ul>
+  </section>
+
+  <section id="pricing">
+    <h3>Pricing (Starting at)</h3>
+    <ul>
+      <li>Basic Car Detail – $99</li>
+      <li>Full Car Detail – $159</li>
+      <li>Boat Detail – $249</li>
+    </ul>
+    <p>*Final prices may vary depending on condition and size. Contact us for a quote.</p>
+  </section>
+
+  <section id="book">
+    <h3>Book a Service</h3>
+    <div class="vehicle-options">
+      <button onclick="showBookingForm('Car')">Car</button>
+      <button onclick="showBookingForm('SUV')">SUV</button>
+      <button onclick="showBookingForm('Truck')">Truck</button>
+      <button onclick="showBoatOptions()">Boat</button>
+    </div>
+
+    <div id="boat-options" class="boat-options" style="display:none;">
+      <button onclick="showBookingForm('Pontoon')">Pontoon</button>
+      <button onclick="showBookingForm('Speed Boat')">Speed Boat</button>
+      <button onclick="showBookingForm('Fishing Boat')">Fishing Boat</button>
+    </div>
+  </section>
+
+  <section id="booking-form">
+    <h3>Booking Form</h3>
+    <form>
+      <input type="hidden" id="selected-vehicle" name="vehicleType" />
+      <input type="text" name="fullName" placeholder="Full Name" required />
+      <input type="text" name="address" placeholder="Address" required />
+      <input type="text" name="vehicleDetails" placeholder="Vehicle Info (Make/Model/Year)" required />
+      <input type="date" name="date" required />
+      <select name="timeSlot" required>
+        <option value="">Select Time Slot</option>
+        <option>8am - 12pm</option>
+        <option>12pm - 4pm</option>
+        <option>4pm - 8pm</option>
+      </select>
+      <textarea name="notes" placeholder="Any special requests?" rows="4"></textarea>
+      <button type="submit">Submit Booking</button>
+    </form>
+  </section>
+
+  <section id="contact" class="contact">
+    <h3>Contact</h3>
+    <p>📞 <a href="tel:+15555555555">Call Us Now</a></p>
+    <p>📧 Email: <a href="mailto:info@atbdetailing.com">info@atbdetailing.com</a></p>
+  </section>
+
+  <button class="call-button" onclick="window.location.href='tel:+15555555555'">
+    Call Now
+  </button>
+</body>
+</html>
